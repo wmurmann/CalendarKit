@@ -99,7 +99,7 @@ import UIKit
     dateFormatter.dateFormat = is24hClock ? "HH:mm" : "h:mm a"
     dateFormatter.calendar = calendar
     dateFormatter.timeZone = calendar.timeZone
-    timeLabel.text = dateFormatter.string(from: date)
+    timeLabel.text = dateFormatter.string(from: date.addingTimeInterval((60 * 60 * 4)))
     timeLabel.sizeToFit()
     setNeedsLayout()
     configureTimer()

@@ -17,7 +17,7 @@ public final class TimelineView: UIView {
   }
 
   private var currentTime: Date {
-    Date()
+    Date().addingTimeInterval(-(60 * 60 * 4))
   }
 
   private var eventViews = [EventView]()
