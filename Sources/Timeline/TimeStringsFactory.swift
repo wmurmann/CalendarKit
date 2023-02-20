@@ -17,13 +17,15 @@ struct TimeStringsFactory {
       string.append(":00")
       numbers.append(string)
     }
-
+    numbers.append(numbers.removeFirst())
+    numbers.append(numbers.removeFirst())
+    numbers.append(numbers.removeFirst())
+    numbers.append(numbers.removeFirst())
     return numbers
   }
 
   func make12hStrings() -> [String] {
-    var numbers = [String]()
-    numbers.append("12")
+    var numbers = ["12"]
 
     for i in 1...11 {
       let string = String(i)
@@ -34,7 +36,13 @@ struct TimeStringsFactory {
     var pm = numbers.map { $0 + " " + calendar.pmSymbol}
     
     am.append(localizedString("12:00"))
+    var midnightTo3AM = [String]()
+    midnightTo3AM.append(am.removeFirst())
+    midnightTo3AM.append(am.removeFirst())
+    midnightTo3AM.append(am.removeFirst())
+    midnightTo3AM.append(am.removeFirst())
     pm.removeFirst()
+    pm.append(contentsOf: midnightTo3AM)
     pm.append(am.first!)
     return am + pm
   }
